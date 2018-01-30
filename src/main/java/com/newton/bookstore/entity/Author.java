@@ -1,31 +1,26 @@
 package com.newton.bookstore.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "name")
 public class Author {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String name;
 
     protected Author() {}
 
-    public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Author(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Author[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+                "Author[id=%d, name='%s']", id, name);
     }
 
     // Setters and getters.
@@ -37,19 +32,4 @@ public class Author {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }
