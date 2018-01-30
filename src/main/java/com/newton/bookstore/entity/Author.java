@@ -13,8 +13,8 @@ import java.util.Date;
 @Entity
 @Table(name = "Author")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
-        allowGetters = true)
+//@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
+ //       allowGetters = true)
 public class Author implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,15 +23,15 @@ public class Author implements Serializable {
     @NotBlank
     private String name;
 
-    @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
-
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
+//    @Column(nullable = true, updatable = false)
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @CreatedDate
+//    private Date createdAt;
+//
+//    @Column(nullable = true)
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @LastModifiedDate
+//    private Date updatedAt;
 
     public Long getId() {
         return id;
@@ -49,7 +49,7 @@ public class Author implements Serializable {
         this.name = name;
     }
 
-    public Date getCreatedAt() {
+  /*  public Date getCreatedAt() {
         return createdAt;
     }
 
@@ -63,5 +63,10 @@ public class Author implements Serializable {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }*/
+
+    @Override
+    public String toString() {
+        return  "Author:" + name;
     }
 }

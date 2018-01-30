@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Scanner;
 
 @RestController
@@ -16,17 +17,16 @@ public class AuthorController {
     @Autowired
     AuthorRepository authorRepository;
 
-    // Get All Notes
+    @GetMapping("/authors")
+    public List<Author> getAllNotes() {
+        return authorRepository.findAll();
+    }
 
-    @GetMapping(path="/add") // Map ONLY GET Requests
-    public @ResponseBody String addNewUser (@RequestParam String name) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
 
-        Author author = new Author();
-        author.setName(name);
-        authorRepository.save(author);
-        return "Saved";
+    @PostMapping("/addAuthor")
+    public Author createNote(@Valid @RequestBody Author author) {
+        return authorRepository.save(author);
+    }
 
     // Get a Single Note
 
@@ -34,5 +34,4 @@ public class AuthorController {
 
     // Delete a Note
 
-    }
 }
