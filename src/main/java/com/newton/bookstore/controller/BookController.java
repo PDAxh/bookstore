@@ -18,8 +18,8 @@ public class BookController {
     BookRepository bookRepository;
 
     //Hämtar lista på alla befintliga böcker
-    @GetMapping("/books")
-    public List<Book> getAllAuthors() {
+    @GetMapping("/book")
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
     // Lägger till bok i lager,
@@ -29,7 +29,7 @@ public class BookController {
     }
     // Välj enskild book via id( kan även ändras till titel om så behövs
     @GetMapping("/getBookById/{id}")
-    public ResponseEntity<Book> getAuthorById(@PathVariable(value = "id") int bookId) {
+    public ResponseEntity<Book> getBooksById(@PathVariable(value = "id") int bookId) {
         Book book = bookRepository.findOne(bookId);
         if(book == null) {
             return ResponseEntity.notFound().build();
@@ -37,10 +37,10 @@ public class BookController {
         return ResponseEntity.ok().body(book);
     }
 
-    @PutMapping("/updateAuthor/{id}")
-    public ResponseEntity<Book> updateAuthor(@PathVariable(value = "id") int authorId,
+    @PutMapping("/updateBook/{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable(value = "id") int bookId,
                                                @Valid @RequestBody Book bookDetails) {
-        Book book = bookRepository.findOne(authorId);
+        Book book = bookRepository.findOne(bookId);
         if(book == null) {
             return ResponseEntity.notFound().build();
         }
@@ -48,6 +48,18 @@ public class BookController {
 
         Book updatedAuthor = bookRepository.save(book);
         return ResponseEntity.ok(updatedAuthor);
+    }
+
+    @DeleteMapping("/deleteBook/{id}")
+    public ResponseEntity<Book> deleteBook(@PathVariable(value = "id") int bookId) {
+        Book book = bookRepository.findOne(bookId);
+        if(book == null) {
+            return ResponseEntity.notFound().build();
+        }
+        else {
+            bookRepository.delete(book);
+        }
+        return ResponseEntity.ok().build();
     }
 
 

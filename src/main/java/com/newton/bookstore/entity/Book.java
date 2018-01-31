@@ -90,8 +90,8 @@ public class Book implements Serializable {
         return author;
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return "BookID: " + bookID + ", Book title: " + title + ", author: " + author + ", genre: " + genre + ", published year: " + publishedYear + ", rating: " + rating + ", price: " + price + ", inventory: " + inventory;
-    }
+    }*/
 }
