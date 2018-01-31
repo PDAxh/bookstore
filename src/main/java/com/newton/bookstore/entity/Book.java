@@ -1,52 +1,41 @@
 package com.newton.bookstore.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "book")
-public class Book {
+@Table(name = "Book")
+@EntityListeners(AuditingEntityListener.class)
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long bookID;
 
-    private int bookID;
+    @NotBlank
     private String author;
+    @NotBlank
     private String title;
+    @NotBlank
     private String genre;
+    @NotBlank
     private int publishedYear;
+    @NotBlank
     private int rating;
+    @NotBlank
     private double price;
+    @NotBlank
     private int inventory;
 
-    public Book(String author, String title, String genre, int publishedYear, int rating, double price, int inventory) {
-        this.author = author;
-        this.title = title;
-        this.genre = genre;
-        this.publishedYear = publishedYear;
-        this.rating = rating;
-        this.price = price;
-        this.inventory = inventory;
-    }
-
-    public int getBookID() {
+    public Long getBookID() {
         return bookID;
     }
 
-    public void setBookID(int bookID) {
+    public void setBookID(Long bookID) {
         this.bookID = bookID;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getTitle() {
@@ -95,6 +84,10 @@ public class Book {
 
     public void setInventory(int inventory) {
         this.inventory = inventory;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     @Override
