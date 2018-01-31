@@ -29,9 +29,9 @@ public class AuthorController {
         return authorRepository.save(author);
     }
 
-    @GetMapping("/authors/{id}")
-    public ResponseEntity<Author> getAuthorById(@PathVariable(value = "id") Long authorId) {
-        Author author = authorRepository.findOne(String.valueOf(authorId));
+    @GetMapping("/getAuthorsById/{id}")
+    public ResponseEntity<Author> getAuthorById(@PathVariable(value = "id") int authorId) {
+        Author author = authorRepository.findOne(authorId);
         if(author == null) {
             return ResponseEntity.notFound().build();
         }
@@ -40,9 +40,9 @@ public class AuthorController {
 
     // Update a Note
 
-    @DeleteMapping("/authors/{id}")
-    public ResponseEntity<Author> deleteAuthor(@PathVariable(value = "id") Long authorId) {
-        Author author = authorRepository.findOne(String.valueOf(authorId));
+    @DeleteMapping("/deleteAuthors/{id}")
+    public ResponseEntity<Author> deleteAuthor(@PathVariable(value = "id") int authorId) {
+        Author author = authorRepository.findOne(authorId);
         if(author == null) {
             return ResponseEntity.notFound().build();
         }
