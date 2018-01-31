@@ -38,7 +38,7 @@ public class AuthorController {
         return ResponseEntity.ok().body(author);
     }
 
-    // Update a Note
+
     @PutMapping("/updateAuthor/{id}")
     public ResponseEntity<Author> updateAuthor(@PathVariable(value = "id") int authorId,
                                            @Valid @RequestBody Author authorDetails) {
