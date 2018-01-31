@@ -39,6 +39,19 @@ public class AuthorController {
     }
 
     // Update a Note
+    @PutMapping("/updateAuthor/{id}")
+    public ResponseEntity<Author> updateAuthor(@PathVariable(value = "id") int authorId,
+                                           @Valid @RequestBody Author authorDetails) {
+        Author author = authorRepository.findOne(authorId);
+        if(author == null) {
+            return ResponseEntity.notFound().build();
+        }
+        author.setName(authorDetails.getName());
+
+        Author updatedAuthor = authorRepository.save(author);
+        return ResponseEntity.ok(updatedAuthor);
+    }
+
 
     @DeleteMapping("/deleteAuthors/{id}")
     public ResponseEntity<Author> deleteAuthor(@PathVariable(value = "id") int authorId) {
