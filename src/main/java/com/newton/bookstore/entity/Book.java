@@ -13,7 +13,7 @@ public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long bookID;
+    private int bookID;
 
     @NotBlank
     private String author;
@@ -30,11 +30,11 @@ public class Book implements Serializable {
     @NotBlank
     private int inventory;
 
-    public Long getBookID() {
+    public int getBookID() {
         return bookID;
     }
 
-    public void setBookID(Long bookID) {
+    public void setBookID(int bookID) {
         this.bookID = bookID;
     }
 
