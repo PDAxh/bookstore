@@ -29,7 +29,7 @@ public class AuthorController {
         return authorRepository.save(author);
     }
 
-   @GetMapping("/notes/{id}")
+    @GetMapping("/authors/{id}")
     public ResponseEntity<Author> getAuthorById(@PathVariable(value = "id") Long authorId) {
         Author author = authorRepository.findOne(String.valueOf(authorId));
         if(author == null) {
@@ -40,7 +40,6 @@ public class AuthorController {
 
     // Update a Note
 
-    // Delete a Note
     @DeleteMapping("/authors/{id}")
     public ResponseEntity<Author> deleteAuthor(@PathVariable(value = "id") Long authorId) {
         Author author = authorRepository.findOne(String.valueOf(authorId));
