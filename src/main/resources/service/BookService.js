@@ -1,12 +1,14 @@
 
-/*
-
-var input = document.getElementById('hiddenInput');
-input.value = testVariable.toString();
 
 
+var title = $('#InputTitle');
 
-var title = document.getElementById('InputTitle');
-title.value = titleVariable.toString();
+var genre = $('#InputGenre');
 
-*/
+var published = $('#InputPub');
+
+var price = $('#InputPrice');
+
+var inventory = $('#InputInv');
+
+var BookAuthor = $('#InputAuthor');
