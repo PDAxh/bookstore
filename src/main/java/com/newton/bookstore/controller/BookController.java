@@ -1,13 +1,13 @@
 package com.newton.bookstore.controller;
 
-        import com.newton.bookstore.entity.Book;
-        import com.newton.bookstore.repository.BookRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
+import com.newton.bookstore.entity.Book;
+import com.newton.bookstore.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-        import javax.validation.Valid;
-        import java.util.List;
+import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -42,7 +42,7 @@ public class BookController {
         return ResponseEntity.ok().body(locateBook);
     }
 
-/*
+
     // update book
     @PutMapping("/updateBook/{bookID}")
 
@@ -58,15 +58,13 @@ public class BookController {
         book.setPublishedYear(bookDetails.getPublishedYear());
         book.setInventory(bookDetails.getInventory());
         book.setGenre(bookDetails.getGenre());
-        book.setPrice(bookDetails.setPrice());
+        book.setPrice(bookDetails.getPrice());
 
         Book updatedBook = bookRepository.save(book);
         return ResponseEntity.ok(updatedBook);
 
-        Book updatedAuthor = bookRepository.save(book);
-        return ResponseEntity.ok(updatedAuthor);
     }
-*/
+
     // delete book
     @DeleteMapping("/deleteBooks/{bookID}")
 
@@ -79,6 +77,6 @@ public class BookController {
 
             bookRepository.delete(deleteBook);
         }
-            return ResponseEntity.ok().build();
-        }
+        return ResponseEntity.ok().build();
     }
+}

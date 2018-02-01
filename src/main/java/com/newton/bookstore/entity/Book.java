@@ -23,9 +23,9 @@ public class Book implements Serializable {
     private String genre;
     @NotBlank
     private int publishedYear;
-    @NotBlank
+
     private int rating;
-    @NotBlank
+
     private int price;
     @NotBlank
     private int inventory;
@@ -70,7 +70,7 @@ public class Book implements Serializable {
         this.rating = rating;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
