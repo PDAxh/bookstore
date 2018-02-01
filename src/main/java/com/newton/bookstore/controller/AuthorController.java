@@ -48,6 +48,7 @@ public class AuthorController {
         }
         author.setName(authorDetails.getName());
 
+
         Author updatedAuthor = authorRepository.save(author);
         return ResponseEntity.ok(updatedAuthor);
     }

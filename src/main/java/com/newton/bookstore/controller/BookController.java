@@ -31,10 +31,9 @@ public class BookController {
     }
 
     // Find book
-    @GetMapping("/locateBookById{bookID}")
-
-    public ResponseEntity<Book> locateBookById(@PathVariable(value = "bookID") int bookID) {
-        Book locateBook = bookRepository.findOne(bookID);
+    @GetMapping("/getBookById/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable(value = "id") int id) {
+        Book locateBook = bookRepository.findOne(id);
         if (locateBook == null) {
 
             return ResponseEntity.notFound().build();
@@ -49,16 +48,16 @@ public class BookController {
     public ResponseEntity<Book> updateBook(@PathVariable(value = "bookID") int bookID,
                                            @Valid @RequestBody Book bookDetails) {
         Book book = bookRepository.findOne(bookID);
-        if (book == null) {
-
+        if(book == null) {
             return ResponseEntity.notFound().build();
         }
-
         book.setTitle(bookDetails.getTitle());
-        book.setPublishedYear(bookDetails.getPublishedYear());
-        book.setInventory(bookDetails.getInventory());
+        book.setAuthor(bookDetails.getAuthor());
         book.setGenre(bookDetails.getGenre());
+        book.setPublishedYear(bookDetails.getPublishedYear());
+        book.setRating(bookDetails.getRating());
         book.setPrice(bookDetails.getPrice());
+        book.setInventory(bookDetails.getInventory());
 
         Book updatedBook = bookRepository.save(book);
         return ResponseEntity.ok(updatedBook);

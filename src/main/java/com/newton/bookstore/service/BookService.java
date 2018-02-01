@@ -27,7 +27,7 @@ public class BookService {
     // Update a book on database
     public void updateBook(Book book){
         List<Book> books = new ArrayList<>();
-        bookRepository.findOne(book.getBookID().getBook().forEach(book::add);
+        bookRepository.findOne(book.getId().getBook().forEach(book::add);
         books.setBook(books);
 
         bookRepository.save(book);
