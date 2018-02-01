@@ -13,7 +13,7 @@ public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int bookID;
+    private int id;
 
     @NotBlank
     private String author;
@@ -26,12 +26,12 @@ public class Book implements Serializable {
     private int price;
     private int inventory;
 
-    public int getBookID() {
-        return bookID;
+    public int getId() {
+        return id;
     }
 
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -86,8 +86,12 @@ public class Book implements Serializable {
         return author;
     }
 
-  /*  @Override
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    /*  @Override
     public String toString() {
-        return "BookID: " + bookID + ", Book title: " + title + ", author: " + author + ", genre: " + genre + ", published year: " + publishedYear + ", rating: " + rating + ", price: " + price + ", inventory: " + inventory;
+        return "BookID: " + id + ", Book title: " + title + ", author: " + author + ", genre: " + genre + ", published year: " + publishedYear + ", rating: " + rating + ", price: " + price + ", inventory: " + inventory;
     }*/
 }
