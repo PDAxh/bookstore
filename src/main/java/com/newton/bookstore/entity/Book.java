@@ -26,7 +26,7 @@ public class Book implements Serializable {
     @NotBlank
     private int rating;
     @NotBlank
-    private double price;
+    private int price;
     @NotBlank
     private int inventory;
 
@@ -74,7 +74,7 @@ public class Book implements Serializable {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

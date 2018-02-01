@@ -14,30 +14,26 @@ package com.newton.bookstore.controller;
 @RequestMapping("/api")
 public class BookController {
 
-    private String locateBook;
 
     @Autowired
     BookRepository bookRepository;
 
     // Get All Books
-
     @GetMapping("/books")
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
     // "Buying new book to the store"
-
-    @PostMapping("/books")
-    public Book buyBook(@Valid @RequestBody Book book) {
+    @PostMapping("/addBook")
+    public Book createBook(@Valid @RequestBody Book book) {
         return bookRepository.save(book);
     }
 
     // Find book
+    @GetMapping("/locateBookById{bookID}") // ***Refering to the bookId in Bookentity
 
-    @GetMapping("/books/{bookID}") // ***Refering to the bookId in Bookentity
-
-    public ResponseEntity<Book> locateBook(@PathVariable(value = "bookID") int bookID) {
+    public ResponseEntity<Book> locateBookById(@PathVariable(value = "bookID") int bookID) {
         Book locateBook = bookRepository.findOne(bookID);
         if (locateBook == null) {
 
@@ -46,16 +42,14 @@ public class BookController {
         return ResponseEntity.ok().body(locateBook);
     }
 
-
+/*
     // update book
+    @PutMapping("/updateBook/{bookID}")
 
-    /* BYT UT bookDetails till rätt metod!
-
-    @GetMapping("/books/{bookID}")
-
-    public ResponseEntity<Book> updateBook(@PathVariable(value = "bookID") int bookID) {
+    public ResponseEntity<Book> updateBook(@PathVariable(value = "bookID") int bookID,
+                                           @Valid @RequestBody Book bookDetails) {
         Book book = bookRepository.findOne(bookID);
-        if (locateBook == null) {
+        if (book == null) {
 
             return ResponseEntity.notFound().build();
         }
@@ -69,21 +63,22 @@ public class BookController {
         Book updatedBook = bookRepository.save(book);
         return ResponseEntity.ok(updatedBook);
 
-        */
-
+        Book updatedAuthor = bookRepository.save(book);
+        return ResponseEntity.ok(updatedAuthor);
+    }
+*/
     // delete book
-
-    @DeleteMapping("/books/{bookID}")
+    @DeleteMapping("/deleteBooks/{bookID}")
 
     public ResponseEntity<Book> deleteBook(@PathVariable(value = "bookID") int bookID) {
         Book deleteBook = bookRepository.findOne(bookID);
         if (deleteBook == null) {
 
             return ResponseEntity.notFound().build();
+        } else {
+
+            bookRepository.delete(deleteBook);
         }
-
-        bookRepository.delete(deleteBook);
-
-        return ResponseEntity.ok().build();
+            return ResponseEntity.ok().build();
+        }
     }
-}
