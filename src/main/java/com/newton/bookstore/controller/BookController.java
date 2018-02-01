@@ -1,13 +1,13 @@
 package com.newton.bookstore.controller;
 
-        import com.newton.bookstore.entity.Book;
-        import com.newton.bookstore.repository.BookRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
+import com.newton.bookstore.entity.Book;
+import com.newton.bookstore.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-        import javax.validation.Valid;
-        import java.util.List;
+import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -31,10 +31,9 @@ public class BookController {
     }
 
     // Find book
-    @GetMapping("/locateBookById{bookID}") // ***Refering to the bookId in Bookentity
-
-    public ResponseEntity<Book> locateBookById(@PathVariable(value = "bookID") int bookID) {
-        Book locateBook = bookRepository.findOne(bookID);
+    @GetMapping("/getBookById/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable(value = "id") int id) {
+        Book locateBook = bookRepository.findOne(id);
         if (locateBook == null) {
 
             return ResponseEntity.notFound().build();
@@ -42,31 +41,29 @@ public class BookController {
         return ResponseEntity.ok().body(locateBook);
     }
 
-/*
+
     // update book
     @PutMapping("/updateBook/{bookID}")
 
     public ResponseEntity<Book> updateBook(@PathVariable(value = "bookID") int bookID,
                                            @Valid @RequestBody Book bookDetails) {
         Book book = bookRepository.findOne(bookID);
-        if (book == null) {
-
+        if(book == null) {
             return ResponseEntity.notFound().build();
         }
-
         book.setTitle(bookDetails.getTitle());
-        book.setPublishedYear(bookDetails.getPublishedYear());
-        book.setInventory(bookDetails.getInventory());
+        book.setAuthor(bookDetails.getAuthor());
         book.setGenre(bookDetails.getGenre());
-        book.setPrice(bookDetails.setPrice());
+        book.setPublishedYear(bookDetails.getPublishedYear());
+        book.setRating(bookDetails.getRating());
+        book.setPrice(bookDetails.getPrice());
+        book.setInventory(bookDetails.getInventory());
 
         Book updatedBook = bookRepository.save(book);
         return ResponseEntity.ok(updatedBook);
 
-        Book updatedAuthor = bookRepository.save(book);
-        return ResponseEntity.ok(updatedAuthor);
     }
-*/
+
     // delete book
     @DeleteMapping("/deleteBooks/{bookID}")
 
@@ -79,6 +76,6 @@ public class BookController {
 
             bookRepository.delete(deleteBook);
         }
-            return ResponseEntity.ok().build();
-        }
+        return ResponseEntity.ok().build();
     }
+}

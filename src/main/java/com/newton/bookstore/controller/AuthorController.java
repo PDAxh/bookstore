@@ -26,6 +26,7 @@ public class AuthorController {
 
     @PostMapping("/addAuthor")
     public Author createAuthor(@Valid @RequestBody Author author) {
+
         return authorRepository.save(author);
     }
 
@@ -47,6 +48,7 @@ public class AuthorController {
             return ResponseEntity.notFound().build();
         }
         author.setName(authorDetails.getName());
+
 
         Author updatedAuthor = authorRepository.save(author);
         return ResponseEntity.ok(updatedAuthor);
