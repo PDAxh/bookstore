@@ -31,7 +31,7 @@ public class BookController {
     }
 
     // Find book
-    @GetMapping("/locateBookById{bookID}") // ***Refering to the bookId in Bookentity
+    @GetMapping("/locateBookById{bookID}")
 
     public ResponseEntity<Book> locateBookById(@PathVariable(value = "bookID") int bookID) {
         Book locateBook = bookRepository.findOne(bookID);

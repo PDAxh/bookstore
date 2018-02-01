@@ -21,13 +21,9 @@ public class Book implements Serializable {
     private String title;
     @NotBlank
     private String genre;
-    @NotBlank
     private int publishedYear;
-
     private int rating;
-
     private int price;
-    @NotBlank
     private int inventory;
 
     public int getBookID() {
