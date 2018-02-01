@@ -26,6 +26,7 @@ public class AuthorController {
 
     @PostMapping("/addAuthor")
     public Author createAuthor(@Valid @RequestBody Author author) {
+
         return authorRepository.save(author);
     }
 
