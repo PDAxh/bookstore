@@ -46,3 +46,13 @@
     text-decoration: none;
     color:black;
 }
+
+.image-stars-style, .total-rated-text-style {
+    padding-top: 25px;
+}
+
+.stars-total-per-star {
+    position: relative;
+    top: 10px;
+    left: 15px;
+}
