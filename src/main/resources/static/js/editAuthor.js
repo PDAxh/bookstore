@@ -8,7 +8,7 @@ function editAuthor() {
         }
     }
 
-    xhr.open('POST', 'http://localhost:3300/api/updateAuthor/{id}', true);
+    xhr.open('PUT', 'http://localhost:3300/api/updateAuthor/{id}', true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
         if( xhr.readyState=== 4 && xhr.status===200){
