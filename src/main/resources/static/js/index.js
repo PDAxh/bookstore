@@ -81,6 +81,8 @@ console.log(type);
                     console.log(bookToPut);
                 } else if (type == "remove") {
                     bookToPut.inventory--;
+                    if (bookToPut.inventory < 0)
+                        bookToPut.inventory = 0;
                     console.log(bookToPut);
                 } else {
                 console.log("Something went wrong!");
