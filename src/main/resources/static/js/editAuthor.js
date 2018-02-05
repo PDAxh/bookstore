@@ -17,7 +17,7 @@ function editAuthor() {
         }
     };
     // uppdatera senare när andreas fixat sin del.
-    var inputName = document.getElementById("InputAddAuthorName").value;
+    var inputName = document.getElementById("EditAuthor").value;
     console.log(inputName);
     var data = JSON.stringify({"name": inputName});
     xhr.send(data);
