@@ -26,39 +26,11 @@
     <hr/>
     <h3>View books</h3>
     <div class="col-md-12">
+
+      <!--BOOK TABLE -->
       <div id="bookTableContainer"></div>
 
-      <!-- <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Author</th>
-            <th scope="col">Published</th>
-            <th scope="col">Price</th>
-            <th scope="col1">Rating</th>
-            <th scope="col">Inventory</th>
-            <th scope="col"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th>
-          </tr>
-        </thead>
-        <tbody>
 
-          <tr>
-            <td scope="row">1</td>
-            <td scope="row">Forward the Foundation</td>
-            <td scope="row">Sci-fi</td>
-            <td scope="row">Isaac Asimov</td>
-            <td scope="row">2018</td>
-            <td scope="row">8$</td>
-            <td scope="row">3/5</td>
-            <td scope="row">1</td>
-            <td scope="row">
-
-              <a href="editBook.html"><button type="button" class="btn btn-primary" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a><button type="button" class="btn btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button><button type="button" class="btn btn-warning" aria-label="Left Align" data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Rate</button>
-          </tr>
-        </tbody>
-      </table> -->
       <a href="addBook.html">
       <button type="button" class="btn btn-success" aria-label="Left Align">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Book
@@ -87,7 +59,7 @@
               <div class="modal-body">
                 <div class="col-md-12">
                   <fieldset class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Excellent"></label>
+                    <input type="button" id="star5" name="rating" value="5" onclick="rateBook(this.value)"/><label class = "full" for="star5" title="Excellent"></label>
                     <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty Good"></label>
                     <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Good"></label>
                     <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Bad"></label>
@@ -106,38 +78,6 @@
     </div>
 
     <script src="js/index.js"></script>
-  <script>
-
-
-
-      // total rating for this book: star5 + star4 + star3 + star2 + star1
-     (document.getElementById("star5").onclick = function () {
-        // 1+ for 5 stars
-             alert("5 stars");
-             });
-      (document.getElementById("star4").onclick = function () {
-             // 1+ for 4 stars
-             alert("4 stars");
-             });
-      (document.getElementById("star3").onclick = function () {
-             // 1+ for 3 stars
-             alert("3 stars");
-            });
-      (document.getElementById("star2").onclick = function () {
-             // 1+ for 2 stars
-             alert("2 stars");
-            });
-             // 1+ for 1 star
-      (document.getElementById("star1").onclick = function () {
-             alert("1 stars");
-      }); 
-
-
-
-
-
-
-  </script>
 
 
 
