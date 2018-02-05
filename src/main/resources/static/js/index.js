@@ -15,10 +15,12 @@ var responseObject;
 
 function createBookTable(data) {
 console.log(data);
-    var bookTable = '<table class="table"><thead><tr><th scope="col">Title</th><th scope="col">Genre</th><th scope="col">Author</th><th scope="col">Published</th><th scope="col">Price</th><th>Rating</th><th scope="col">Invetory><th scope="col"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th><tr></thead><tbody>';
+    var bookTable = '<table class="table"><thead><tr><th scope="col">Title</th><th scope="col">Genre</th><th scope="col">Author</th><th scope="col">Published</th><th scope="col">Price</th><th>Rating</th><th scope="col">Inventory<th scope="col"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th><tr></thead><tbody>';
 
     $.each(data, function(key, item){
-        bookTable += '<tr><td scope="row"><p>' + item.title + '</p></td><td scope="row"><p>' + item.genre + '</p></td><td scope="row"><p>' + item.author + '</p></td><td scope="row"><p>' + item.publishedYear + '</p></td><td scope="row"><p>' + item.price + '</p></td><td scope="row"><p>' + item.rating + '</p></td><td scope="row"><p>' + item.inventory + '</p></td><td scope="row">   <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><a href="editBook.html"><button type="button" class="btn btn-primary" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a><button type="button" class="btn btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button><button type="button" class="btn btn-warning" aria-label="Left Align" data-toggle="modal" href="#myModal" value="' + item.id +'" onclick="setBookToRate(this.value)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Rate</button></td></tr>';
+
+        bookTable += '<tr><td scope="row"><p>' + item.title + '</p></td><td scope="row"><p>' + item.genre + '</p></td><td scope="row"><p>' + item.author + '</p></td><td scope="row"><p>' + item.publishedYear + '</p></td><td scope="row"><p>' + item.price + '</p></td><td scope="row"><p>' + item.rating + '</p></td><td scope="row"><p>' + item.inventory + '</p></td><td scope="row">   <button type="button" class="btn btn-default" value="'+ item.id +'" onclick="addInv(this.value)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button><button type="button" class="btn btn-default" value="'+ item.id +'" onclick="removeInv(this.value)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><a href="editBook.html"><button type="button" class="btn btn-primary" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a><button type="button" class="btn btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button><button type="button" class="btn btn-warning" aria-label="Left Align" data-toggle="modal" href="#myModal" value="' + item.id +'" onclick="setBookToRate(this.value)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Rate</button><a href="ratingStatistics.html"><button type="button" class="btn btn-info" aria-label="Left Align"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></button></a></td></tr>';
+
     });
     console.log(bookTable);
     bookTable += '</tbody></table>';
@@ -36,20 +38,17 @@ function rateBook(rating) {
 
         for (var i = 0; i < responseObject.length; i++){
           if (responseObject[i].id == bookToRate){
-            bookToPut = responseObject[i];
-            bookToPut.rating = parseInt(rating);
+            bookToPut = {"title" : responseObject[i].title, "author" : responseObject[i].author, "genre" : responseObject[i].genre, "publishedYear" : responseObject[i].publishedYear, "rating" : rating, "price" : responseObject[i].price, "inventory" : responseObject[i].inventory };
             console.log(bookToPut);
           }
          }
-
-         var jsonTest = {"title" : "test title", "author" : "test author", "genre" : "Test genre", "publishedYear" : 1900, "rating" : 1, "price" : 10, "inventory" : 10 }
-
 
                      $.ajax({
                          url: 'http://localhost:3300/api/updateBook/' + bookToRate,
                          type: 'PUT',
                          dataType: 'json',
-                         data: jsonTest,
+                         contentType : 'application/json',
+                         data: JSON.stringify(bookToPut),
                          success: function (data, textStatus, xhr) {
                             console.log("Entity successfully saved");
                             console.log(data);
@@ -60,24 +59,48 @@ function rateBook(rating) {
                      });
 }
 
-/*
-ADD BOOK
-- get authors
-- add book
+function addInv(id) {
+    updateInv(id, "add");
+}
 
-EDIT BOOK
+function removeInv(id) {
+    updateInv(id, "remove");
+}
 
-ADD AUTHOR X
+function updateInv(id, type){
 
-EDIT AUTHOR
-- Get authors
-- put author
+console.log(type);
 
-INDEX
-- get books
-- rate
-- change inventory
+    var bookToPut = new Object;
 
+            for (var i = 0; i < responseObject.length; i++){
+              if (responseObject[i].id == id){
+                bookToPut = {"title" : responseObject[i].title, "author" : responseObject[i].author, "genre" : responseObject[i].genre, "publishedYear" : responseObject[i].publishedYear, "rating" : responseObject[i].rating, "price" : responseObject[i].price, "inventory" : responseObject[i].inventory };
+                if(type == "add"){
+                    bookToPut.inventory++;
+                    console.log(bookToPut);
+                } else if (type == "remove") {
+                    bookToPut.inventory--;
+                    console.log(bookToPut);
+                } else {
+                console.log("Something went wrong!");
+                }
+              }
+             }
 
-
-*/
+                         $.ajax({
+                             url: 'http://localhost:3300/api/updateBook/' + id,
+                             type: 'PUT',
+                             dataType: 'json',
+                             contentType : 'application/json',
+                             data: JSON.stringify(bookToPut),
+                             success: function (data, textStatus, xhr) {
+                                console.log("Entity successfully saved");
+                                console.log(data);
+                                location.reload();
+                             },
+                             error: function (xhr, textStatus, errorThrown) {
+                                 console.log('Error in Operation');
+                             }
+                         });
+}
