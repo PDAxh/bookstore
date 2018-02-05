@@ -60,10 +60,10 @@
                 <div class="col-md-12">
                   <fieldset class="rating">
                     <input type="button" id="star5" name="rating" value="5" onclick="rateBook(this.value)"/><label class = "full" for="star5" title="Excellent"></label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty Good"></label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Good"></label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Bad"></label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Very Bad"></label>
+                    <input type="radio" id="star4" name="rating" value="4" onclick="rateBook(this.value)"/><label class = "full" for="star4" title="Pretty Good"></label>
+                    <input type="radio" id="star3" name="rating" value="3" onclick="rateBook(this.value)"/><label class = "full" for="star3" title="Good"></label>
+                    <input type="radio" id="star2" name="rating" value="2" onclick="rateBook(this.value)"/><label class = "full" for="star2" title="Bad"></label>
+                    <input type="radio" id="star1" name="rating" value="1" onclick="rateBook(this.value)"/><label class = "full" for="star1" title="Very Bad"></label>
                   </fieldset>
                  </div>
                 <p class="book-title">Book title here</p>
@@ -78,8 +78,5 @@
     </div>
 
     <script src="js/index.js"></script>
-
-
-
   </body>
 </html>

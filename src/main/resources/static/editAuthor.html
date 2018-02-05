@@ -24,12 +24,12 @@
         <form>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="InputAuthor">Name</label>
-                    <input class="form-control" id="InputAuthor" required>
+                    <label for="EditAuthor">Name</label>
+                    <input class="form-control" id="EditAuthor" required>
                 </div>
             </div>
             <div class="col-md-12">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" onclick="editAuthor()">Submit</button>
                 <a href="index.html">
                     <button type="button" id="cancel-add-book" value="Back" class="btn btn-default">Cancel</button>
                 </a>
@@ -38,11 +38,9 @@
     </div>
 </div>
 
+<!--TODO  lägga till  tabell över befintliga författare som går att redigera, dessa ska man kunna kicka på och id nr memoreras sedan kan man ändra namnet.-->
 
-<script>
-
-
-</script>
+<script src="js/editAuthor.js"></script>>
 
 
 </body>
