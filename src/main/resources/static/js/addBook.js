@@ -6,7 +6,7 @@ xhr.onload = function () {
         console.log(responseObject);
         createAddBookTable(responseObject);
     }
-};
+}
 
 xhr.open('GET', 'http://localhost:3300/api/books', true);
 xhr.send(null);
