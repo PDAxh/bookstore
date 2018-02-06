@@ -24,9 +24,14 @@
         <form>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="EditAuthor">Name</label>
-                    <input class="form-control" id="EditAuthor" required>
+                    <label for="selectAuthor">Author</label>
+                        <select class="form-control form-control-lg" id="selectAuthor" onchange="updateAuthor()">
+                    </select>
                 </div>
+            </div>
+            <div class="col-md-6">
+                <label for="inputAuthor">Edit</label>
+                <input class="form-control" id="inputAuthor" required>
             </div>
             <div class="col-md-12">
                 <button type="button" class="btn btn-primary" onclick="editAuthor()">Submit</button>
