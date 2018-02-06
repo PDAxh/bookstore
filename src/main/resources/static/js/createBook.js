@@ -6,7 +6,7 @@ function createAuthor() {
             var responseObject = JSON.parse(xhr.responseText);
             console.log(responseObject);
         }
-    }
+    };
 
     xhr.open('POST', 'http://localhost:3300/api/addBook', true);
     xhr.setRequestHeader("Content-type", "application/json");
