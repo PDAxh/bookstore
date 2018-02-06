@@ -68,7 +68,17 @@ function removeInv(id) {
 }
 
 function deleteBook(id) {
-    var deleteBookWarning = confirm("Are you sure you want to delete?");
+    var bookTitle;
+    var quotation = '"';
+
+    for (var i = 0; i < responseObject.length; i++) {
+        if (responseObject[i].id == id) {
+           bookTitle = responseObject[i].title;
+           console.log(bookTitle);
+        }
+    }
+
+    var deleteBookWarning = confirm("Are you sure you want to delete " + quotation+bookTitle+quotation + "?");
     if (deleteBookWarning)
     $.ajax({
         url: 'http://localhost:3300/api/deleteBooks/' + id,
