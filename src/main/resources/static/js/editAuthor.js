@@ -32,7 +32,10 @@ var currentId;
 
 
 function editAuthor() {
-    package = {};
+    package = {"name": inputField.value};
+    console.log(package);
+    console.log(currentId);
+
     $.ajax({
         url: 'http://localhost:3300/api/updateAuthor/' + currentId,
         type: 'PUT',
