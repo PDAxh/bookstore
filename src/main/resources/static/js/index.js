@@ -51,6 +51,7 @@ function rateBook(rating) {
                          data: JSON.stringify(bookToPut),
                          success: function (data, textStatus, xhr) {
                             console.log("Entity successfully saved");
+                            document.getElementById("text-feedback").innerHTML = "Thanks for rating!";
                             console.log(data);
                          },
                          error: function (xhr, textStatus, errorThrown) {
