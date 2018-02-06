@@ -68,6 +68,8 @@ function removeInv(id) {
 }
 
 function deleteBook(id) {
+    var deleteBookWarning = confirm("Are you sure you want to delete?");
+    if (deleteBookWarning)
     $.ajax({
         url: 'http://localhost:3300/api/deleteBooks/' + id,
         type: 'DELETE',
