@@ -58,3 +58,10 @@
     margin-top: 25px;
     font-size: 16px;
 }
+
+.btn {
+    margin: 2px !important;
+}
+.bold {
+font-weight: bold;
+}
