@@ -30,7 +30,7 @@
 .rating > label:hover ~ input:checked ~ label,
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
-.book-title, .modal-title {
+.choose-rate, .modal-title {
     text-align: center;
     font-size: 20px;
 }
