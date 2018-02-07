@@ -19,7 +19,7 @@ console.log(data);
 
     $.each(data, function(key, item){
 
-        bookTable += '<tr><td scope="row"><p class="bold">' + item.title + '</p></td><td scope="row"><p>' + item.genre + '</p></td><td scope="row"><p>' + item.author + '</p></td><td scope="row"><p>' + item.publishedYear + '</p></td><td scope="row"><p>' + item.price + '</p></td><td scope="row"><p>' + item.rating + '</p></td><td scope="row"><p>' + item.inventory + '</p></td><td scope="row">   <button type="button" class="btn btn-default" value="'+ item.id +'" onclick="addInv(this.value)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button><button type="button" class="btn btn-default" value="'+ item.id +'" onclick="removeInv(this.value)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><a href="editBook.html"><button type="button" class="btn btn-primary" aria-label="Left Align" value="'+item.id+'" onclick="transferId(this.value)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a><button type="button" class="btn btn-danger" aria-label="Left Align" value="' + item.id +'" onclick="deleteBook(this.value)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button><button type="button" class="btn btn-warning" aria-label="Left Align" data-toggle="modal" href="#myModal" value="' + item.id +'" onclick="setBookToRate(this.value)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button><a href="ratingStatistics.html"><button type="button" class="btn btn-info" aria-label="Left Align"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></button></a></td></tr>';
+        bookTable += '<tr><td scope="row"><p class="bold">' + item.title + '</p></td><td scope="row"><p>' + item.genre + '</p></td><td scope="row"><p>' + item.author + '</p></td><td scope="row"><p>' + item.publishedYear + '</p></td><td scope="row"><p>' + item.price + '</p></td><td scope="row"><p>' + item.rating + '</p></td><td scope="row"><p>' + item.inventory + '</p></td><td scope="row">   <button type="button" title="Add Up" class="btn btn-default" value="'+ item.id +'" onclick="addInv(this.value)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button><button type="button" title="Add Down" class="btn btn-default" value="'+ item.id +'" onclick="removeInv(this.value)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><a href="editBook.html"><button type="button" title="Edit Book" class="btn btn-primary" aria-label="Left Align" value="'+item.id+'" onclick="transferId(this.value)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></a><button type="button" title="Delete Book" class="btn btn-danger" aria-label="Left Align" value="' + item.id +'" onclick="deleteBook(this.value)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button><button type="button" title="Rate Book" class="btn btn-warning" aria-label="Left Align" data-toggle="modal" href="#myModal" value="' + item.id +'" onclick="setBookToRate(this.value)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button><a href="ratingStatistics.html"><button type="button" title="Statistics" class="btn btn-info" aria-label="Left Align"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></button></a></td></tr>';
 
     });
     console.log(bookTable);
@@ -51,6 +51,7 @@ function rateBook(rating) {
                          data: JSON.stringify(bookToPut),
                          success: function (data, textStatus, xhr) {
                             console.log("Entity successfully saved");
+                            document.getElementById("text-feedback").innerHTML = "Thanks for rating!";
                             console.log(data);
                          },
                          error: function (xhr, textStatus, errorThrown) {
@@ -68,7 +69,17 @@ function removeInv(id) {
 }
 
 function deleteBook(id) {
-    var deleteBookWarning = confirm("Are you sure you want to delete?");
+    var bookTitle;
+    var quotation = '"';
+
+    for (var i = 0; i < responseObject.length; i++) {
+        if (responseObject[i].id == id) {
+           bookTitle = responseObject[i].title;
+           console.log(bookTitle);
+        }
+    }
+
+    var deleteBookWarning = confirm("Are you sure you want to delete " + quotation+bookTitle+quotation + "?");
     if (deleteBookWarning)
     $.ajax({
         url: 'http://localhost:3300/api/deleteBooks/' + id,
