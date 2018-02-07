@@ -45,6 +45,7 @@ function editAuthor() {
         success: function (data, textStatus, xhr) {
             console.log("Entity successfully saved");
             console.log(data);
+            location.reload();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
