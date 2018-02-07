@@ -38,7 +38,7 @@ function rateBook(rating) {
 
         for (var i = 0; i < responseObject.length; i++){
           if (responseObject[i].id == bookToRate){
-            bookToPut = {"title" : responseObject[i].title, "author" : responseObject[i].author, "genre" : responseObject[i].genre, "publishedYear" : responseObject[i].publishedYear, "rating" : rating, "price" : responseObject[i].price, "inventory" : responseObject[i].inventory };
+            bookToPut = {"title" : responseObject[i].title, "author" : responseObject[i].author, "genre" : responseObject[i].genre, "publishedYear" : responseObject[i].publishedYear, "rating" : rating, "price" : responseObject[i].price, "inventory" : responseObject[i].inventory, "authorId" : responseObject[i].authorId };
             console.log(bookToPut);
           }
          }
@@ -103,21 +103,21 @@ console.log(type);
               }
              }
 
-                         $.ajax({
-                             url: 'http://localhost:3300/api/updateBook/' + id,
-                             type: 'PUT',
-                             dataType: 'json',
-                             contentType : 'application/json',
-                             data: JSON.stringify(bookToPut),
-                             success: function (data, textStatus, xhr) {
-                                console.log("Entity successfully saved");
-                                console.log(data);
-                                location.reload();
-                             },
-                             error: function (xhr, textStatus, errorThrown) {
-                                 console.log('Error in Operation');
-                             }
-                         });
+                             $.ajax({
+                                 url: 'http://localhost:3300/api/updateBook/' + id,
+                                 type: 'PUT',
+                                 dataType: 'json',
+                                 contentType : 'application/json',
+                                 data: JSON.stringify(bookToPut),
+                                 success: function (data, textStatus, xhr) {
+                                    console.log("Entity successfully saved");
+                                    console.log(data);
+                                    location.reload();
+                                 },
+                                 error: function (xhr, textStatus, errorThrown) {
+                                     console.log('Error in Operation');
+                                 }
+                             });
 }
 
 function transferId(id){

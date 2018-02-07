@@ -1,7 +1,7 @@
 var xhr = new XMLHttpRequest();
 var responseObject;
 var dropdownList = document.getElementById("selectAuthor");
-var inputField = document.getElementById("inputAuthor");
+var inputField = document.getElementById("InputAuthor");
 
 
 xhr.onload = function() {
