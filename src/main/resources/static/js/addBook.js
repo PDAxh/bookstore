@@ -25,7 +25,6 @@ function popAuthorList(authorObject){
 function addBook() {
 
 
-console.log("HEJHEJEHEJEHEJEHEJ");
     var title = document.getElementById("InputTitle").value;
     var genre = document.getElementById("InputGenre").value;
     var published = document.getElementById("InputPub").value;
@@ -40,7 +39,7 @@ console.log("HEJHEJEHEJEHEJEHEJ");
     bookRequest.open('POST', 'http://localhost:3300/api/addBook', true);
         bookRequest.setRequestHeader("Content-type", "application/json");
         bookRequest.onreadystatechange = function () {
-        console.log("ALLT ÄR BRA");
+        
             if( bookRequest.readyState=== 4 && bookRequest.status===200){
                 var json = JSON.parse(bookRequest.responseText);
                 console.log(json.name )
