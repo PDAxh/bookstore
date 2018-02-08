@@ -15,6 +15,7 @@ function createAuthor() {
         if( xhr.readyState=== 4 && xhr.status===200){
             var json = JSON.parse(xhr.responseText);
             console.log(json.name )
+            location.reload();
         }
     };
 
