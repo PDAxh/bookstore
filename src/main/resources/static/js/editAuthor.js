@@ -7,10 +7,9 @@ var currentId;
     xhr.onload = function() {
             if(xhr.status == 200) {
                 responseObject = JSON.parse(xhr.responseText);
-                console.log(responseObject);
-                popAuthorList();
+                       popAuthorList();
             }
-        }
+        };
 
     xhr.open('GET', 'http://localhost:3300/api/authors', true);
     xhr.send(null);
@@ -29,12 +28,8 @@ var currentId;
         currentId = dropdownList.options[dropdownList.selectedIndex].value;
     }
 
-
-
 function editAuthor() {
     package = {"name": inputField.value};
-    console.log(package);
-    console.log(currentId);
 
     $.ajax({
         url: 'http://localhost:3300/api/updateAuthor/' + currentId,
@@ -43,9 +38,7 @@ function editAuthor() {
         contentType : 'application/json',
         data: JSON.stringify(package),
         success: function (data, textStatus, xhr) {
-            console.log("Entity successfully saved");
-            console.log(data);
-            location.reload();
+                location.reload();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log('Error in Operation');

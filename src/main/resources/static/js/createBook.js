@@ -4,10 +4,9 @@ var dropdownList = document.getElementById("selectAuthor");
 var inputField = document.getElementById("InputAuthor");
 
 
-xhr.onload = function() {
-    if(xhr.status == 200) {
+xhr.onload = function () {
+    if (xhr.status == 200) {
         responseObject = JSON.parse(xhr.responseText);
-        console.log(responseObject);
         popAuthorList();
     }
 };
@@ -15,8 +14,8 @@ xhr.onload = function() {
 xhr.open('GET', 'http://localhost:3300/api/authors', true);
 xhr.send(null);
 
-function popAuthorList(){
-    for(var i = 0; i < responseObject.length; i++){
+function popAuthorList() {
+    for (var i = 0; i < responseObject.length; i++) {
         var option = document.createElement('option');
         option.innerHTML = responseObject[i].name;
         option.value = responseObject[i].id;
@@ -27,8 +26,8 @@ function popAuthorList(){
 function createAuthor() {
     var xhr = new XMLHttpRequest();
 
-    xhr.onload = function() {
-        if(xhr.status == 200) {
+    xhr.onload = function () {
+        if (xhr.status == 200) {
             var responseObject = JSON.parse(xhr.responseText);
             console.log(responseObject);
         }
@@ -37,9 +36,8 @@ function createAuthor() {
     xhr.open('POST', 'http://localhost:3300/api/addBook', true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
-        if( xhr.readyState=== 4 && xhr.status===200){
+        if (xhr.readyState === 4 && xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
-            console.log(json.name )
         }
     };
 
