@@ -43,13 +43,13 @@
 }
 
 .image-stars-style, .total-rated-text-style {
-    padding-top: 25px;
+    padding-top: 40px;
 }
 
 .stars-total-per-star {
     position: relative;
-    top: 10px;
-    left: 15px;
+    top: 17px;
+    left: 40px;
 }
 
 .rating-back-button {
