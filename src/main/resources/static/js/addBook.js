@@ -42,8 +42,8 @@ function addBook() {
         
             if( bookRequest.readyState=== 4 && bookRequest.status===200){
                 var json = JSON.parse(bookRequest.responseText);
-                console.log(json.name )
-                location.reload;
+                console.log(json.name)
+                location.reload();
 
             }
         };
