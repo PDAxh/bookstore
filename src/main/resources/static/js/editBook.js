@@ -62,7 +62,7 @@ function updateBook() {
     var genre = document.getElementById("InputGenre").value;
     var publishedYear = parseInt(document.getElementById("InputPub").value);
     var rating = parseInt(bookObject.rating);
-    var author = authorId = dropdownList.options[dropdownList.selectedIndex].innerHTML;
+    var author = dropdownList.options[dropdownList.selectedIndex].innerHTML;
     var price = parseInt(document.getElementById("InputPrice").value);
     var inventory = parseInt(document.getElementById("InputInv").value);
     var authorId = parseInt(dropdownList.options[dropdownList.selectedIndex].id);
