@@ -1,3 +1,7 @@
+.col-md-12 {
+    margin-bottom: 60px;
+}
+
 .rating {
     border: none;
     float: left;
@@ -57,6 +61,7 @@
     color:black;
     margin-top: 25px;
     font-size: 16px;
+    margin-bottom: 100px;
 }
 
 .btn {
