@@ -46,7 +46,6 @@ function addBook() {
                 var json = JSON.parse(bookRequest.responseText);
                 console.log(json.name)
                 location.reload();
-
             }
         };
 
