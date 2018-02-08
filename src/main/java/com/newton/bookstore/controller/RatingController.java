@@ -2,12 +2,14 @@ package com.newton.bookstore.controller;
 
 import com.newton.bookstore.entity.Rating;
 import com.newton.bookstore.repository.RatingRepository;
+import com.oracle.webservices.internal.api.message.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -21,6 +23,12 @@ public class RatingController {
     public List<Rating> getAllRatings() {
         return ratingRepository.findAll();
     }
+
+    @GetMapping("/ratingsById/{id}")
+    public List<Map<ContentType, Rating>> getRatingsById(@PathVariable(value = "id") int id){
+        return ratingRepository.getRatingsById(id);
+    }
+
 
     @PostMapping("/addRating")
     public Rating createRating(@Valid @RequestBody Rating rating) {

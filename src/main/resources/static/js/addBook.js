@@ -35,7 +35,7 @@ console.log("HEJHEJEHEJEHEJEHEJ");
     var authorId = document.getElementById("InputAuthor").value;
     var author = document.getElementById("InputAuthor").options[dropdownList.selectedIndex].innerHTML;
 
-    var package = JSON.stringify({"title": title, "genre": genre, "publishedYear": published, "price": price, "inventory": inventory, "author": author, "rating" : 0, "authorId" :  authorId});
+    var package = JSON.stringify({"title": title, "genre": genre, "publishedYear": published, "price": price, "inventory": inventory, "author": author, "authorId" :  authorId});
     console.log("OBJECT > "+package);
     console.log(authorId);
     var bookRequest = new XMLHttpRequest();

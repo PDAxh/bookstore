@@ -18,6 +18,10 @@ public class Rating implements Serializable {
     private int star;
     private int bookId;
 
+
+
+
+
     public int getId() {
         return id;
     }

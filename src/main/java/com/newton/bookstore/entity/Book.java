@@ -24,7 +24,6 @@ public class Book implements Serializable {
     @NotBlank
     private String genre;
     private int publishedYear;
-    private int rating;
     private int price;
     private int inventory;
 
@@ -58,14 +57,6 @@ public class Book implements Serializable {
 
     public void setPublishedYear(int publishedYear) {
         this.publishedYear = publishedYear;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public int getPrice() {
