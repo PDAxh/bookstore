@@ -11,23 +11,25 @@ console.log(id);
                 bookObject = JSON.parse(bookRequest.responseText);
                 console.log(bookObject);
                 fillForm();
+                getAuthorObject();
             }
         }
 
     bookRequest.open('GET', 'http://localhost:3300/api/getBookById/'+id, true);
     bookRequest.send(null);
 
-
+function getAuthorObject() {
     authorRequest.onload = function() {
-            if(authorRequest.status == 200) {
-                authorObject = JSON.parse(authorRequest.responseText);
-                console.log(authorObject);
-                popAuthorList ();
+                if(authorRequest.status == 200) {
+                    authorObject = JSON.parse(authorRequest.responseText);
+                    console.log(authorObject);
+                    popAuthorList ();
+                }
             }
-        }
 
-    authorRequest.open('GET', 'http://localhost:3300/api/authors', true);
-    authorRequest.send(null);
+        authorRequest.open('GET', 'http://localhost:3300/api/authors', true);
+        authorRequest.send(null);
+}
 
 
 function popAuthorList(){
@@ -35,16 +37,15 @@ function popAuthorList(){
         for(var i = 0; i < authorObject.length; i++){
             var option = document.createElement('option');
             option.innerHTML =  authorObject[i].name;
-            option.value = authorObject[i].id;
+            option.id = authorObject[i].id;
             console.log(authorObject[i].name + authorObject[i].id);
             dropdownList.appendChild(option);
+            
+            if(option.id == bookObject.authorId){
+                dropdownList.selectedIndex = option.index;
+            }
 
         }
-
-        dropdownList.option[2].selected== true;
-        console.log(bookObject.authorId+"hej");
-        console.log(bookObject);
-        console.log(dropdownList.getItem);
     }
 
 
