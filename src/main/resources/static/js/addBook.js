@@ -11,9 +11,6 @@ xhr.onload = function () {
 xhr.open('GET', 'http://localhost:3300/api/authors', true);
 xhr.send(null);
 
-
-
-
 function addBook() {
     var title = document.getElementById("InputTitle").value;
     var genre = document.getElementById("InputGenre").value;
@@ -23,7 +20,6 @@ function addBook() {
     var author = document.getElementById("InputAuthor").value;
 
     var data = JSON.stringify({"title": title, "genre": genre, "published": published, "price": price, "inventory": inventory, "author": author });
-
 
     xhr.open('POST', 'http://localhost:3300/api/addAuthor', true);
     xhr.setRequestHeader("Content-type", "application/json");
